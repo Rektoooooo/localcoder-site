@@ -30,10 +30,19 @@
   },
   "Hero": {
     "eyebrow": "On-prem AI coding, built for Czech enterprises",
-    "title": "Ship AI coding without shipping your code.",
+    "titleLine1": "Ship AI coding",
+    "titleLine2Before": "without ",
+    "titleLine2Highlight": "shipping",
+    "titleLine3": "your code.",
     "subtitle": "A turnkey local LLM coding assistant that indexes your codebase and runs on Apple Silicon — so your source, secrets, and IP never leave your building.",
     "ctaPrimary": "Request a pilot",
-    "ctaSecondary": "See hardware tiers"
+    "ctaSecondary": "See hardware tiers",
+    "trustAirGap": "Air-gapped",
+    "trustGdpr": "GDPR ready",
+    "trustAiAct": "EU AI Act"
+  },
+  "LogoBar": {
+    "builtOn": "Built on"
   },
   "Problem": {
     "title": "Your code is your most valuable asset. Cloud AI treats it like training data.",

@@ -30,10 +30,19 @@
   },
   "Hero": {
     "eyebrow": "On-prem AI kódování pro české firmy",
-    "title": "AI kódování bez odesílání vašeho kódu.",
+    "titleLine1": "AI kódování",
+    "titleLine2Before": "bez ",
+    "titleLine2Highlight": "odesílání",
+    "titleLine3": "vašeho kódu.",
     "subtitle": "Turnkey lokální LLM asistent, který indexuje váš codebase a běží na Apple Silicon — váš zdrojový kód, tajemství a IP nikdy neopustí vaši budovu.",
     "ctaPrimary": "Nezávazný pilot",
-    "ctaSecondary": "Hardwarové úrovně"
+    "ctaSecondary": "Hardwarové úrovně",
+    "trustAirGap": "Air-gapped",
+    "trustGdpr": "GDPR ready",
+    "trustAiAct": "EU AI Act"
+  },
+  "LogoBar": {
+    "builtOn": "Postaveno na"
   },
   "Problem": {
     "title": "Váš kód je vaše nejcennější aktivum. Cloudová AI ho bere jako trénovací data.",
