@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from "next-intl"
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Reveal } from "@/components/interactive/reveal"
 
 export function CtaBand() {
   const t = useTranslations("CtaBand")
@@ -10,7 +11,7 @@ export function CtaBand() {
 
   return (
     <section className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-5xl px-6">
+      <Reveal className="mx-auto max-w-5xl px-6">
         <div className="relative overflow-hidden rounded-3xl border border-border/70 bg-surface/50 p-10 text-center backdrop-blur md:p-16">
           <div
             aria-hidden="true"
@@ -36,7 +37,7 @@ export function CtaBand() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

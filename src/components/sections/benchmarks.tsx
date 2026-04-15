@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl"
 
 import { SectionHeader } from "@/components/sections/section-header"
 import { BENCHMARKS } from "@/lib/benchmarks"
+import { Reveal, RevealStagger, RevealItem } from "@/components/interactive/reveal"
 
 export function Benchmarks() {
   const t = useTranslations("Benchmarks")
@@ -27,11 +28,13 @@ export function Benchmarks() {
   return (
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        <Reveal>
+          <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        </Reveal>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border/60 bg-border/60 md:grid-cols-3">
+        <RevealStagger className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border/60 bg-border/60 md:grid-cols-3">
           {stats.map((stat) => (
-            <div
+            <RevealItem
               key={stat.label}
               className="flex flex-col gap-3 bg-background px-8 py-12 text-center"
             >
@@ -42,9 +45,9 @@ export function Benchmarks() {
                 {stat.value}
               </span>
               <span className="text-sm text-muted-foreground">{stat.note}</span>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
 
         <p className="mt-6 text-center font-mono text-[11px] text-subtle">
           {BENCHMARKS.hardware} · {BENCHMARKS.model} ·{" "}

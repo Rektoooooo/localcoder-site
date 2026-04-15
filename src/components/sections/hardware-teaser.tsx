@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { TIERS } from "@/lib/tiers"
 import { cn } from "@/lib/utils"
+import { Reveal, RevealStagger, RevealItem } from "@/components/interactive/reveal"
 
 export function HardwareTeaser() {
   const t = useTranslations("HardwareTeaser")
@@ -17,14 +18,16 @@ export function HardwareTeaser() {
   return (
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        <Reveal>
+          <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <RevealStagger className="mt-16 grid gap-6 md:grid-cols-3">
           {featured.map((tier) => (
+            <RevealItem key={tier.id} className="h-full">
             <Card
-              key={tier.id}
               className={cn(
-                "relative flex flex-col overflow-hidden border-border/60 bg-surface/40 p-8 backdrop-blur transition-colors hover:border-border-strong",
+                "relative flex h-full flex-col overflow-hidden border-border/60 bg-surface/40 p-8 backdrop-blur transition-colors hover:border-border-strong",
                 tier.featured && "border-brand/50 bg-surface/60"
               )}
             >
@@ -63,10 +66,11 @@ export function HardwareTeaser() {
                 ))}
               </ul>
             </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealStagger>
 
-        <div className="mt-12 flex justify-center">
+        <Reveal className="mt-12 flex justify-center">
           <Button
             variant="outline"
             size="lg"
@@ -77,7 +81,7 @@ export function HardwareTeaser() {
             {t("seeAll")}
             <ArrowRight className="h-4 w-4" />
           </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

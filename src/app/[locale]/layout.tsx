@@ -6,6 +6,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 
 import { routing } from "@/i18n/routing"
+import { BRAND } from "@/lib/constants"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { SiteHeader } from "@/components/layout/site-header"
 import { SiteFooter } from "@/components/layout/site-footer"
@@ -72,6 +73,33 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: BRAND.name,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "macOS (on-prem appliance)",
+    description:
+      "Turnkey on-prem AI coding assistant for Czech enterprises. Apple Silicon hardware plus a RAG pipeline over your own codebase.",
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: "2200",
+      availability: "https://schema.org/PreOrder",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: BRAND.parent,
+      url: "https://localcoder.cz",
+      email: BRAND.contact,
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "CZ",
+        addressLocality: "Prague",
+      },
+    },
+  }
+
   return (
     <html
       lang={locale}
@@ -94,6 +122,10 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Toaster />
           </NextIntlClientProvider>
         </ThemeProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   )

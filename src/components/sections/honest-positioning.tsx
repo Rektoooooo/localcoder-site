@@ -3,6 +3,7 @@ import { Check, X } from "lucide-react"
 
 import { SectionHeader } from "@/components/sections/section-header"
 import { Card } from "@/components/ui/card"
+import { Reveal, RevealStagger, RevealItem } from "@/components/interactive/reveal"
 
 export function HonestPositioning() {
   const t = useTranslations("HonestPositioning")
@@ -13,10 +14,12 @@ export function HonestPositioning() {
   return (
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        <Reveal>
+          <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+        </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          <Card className="border-border/60 bg-surface/40 p-8 backdrop-blur">
+        <RevealStagger className="mt-16 grid gap-6 md:grid-cols-2">
+          <RevealItem><Card className="h-full border-border/60 bg-surface/40 p-8 backdrop-blur">
             <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-success/30 bg-success/10 text-success">
               <Check className="h-4.5 w-4.5" />
             </div>
@@ -34,9 +37,9 @@ export function HonestPositioning() {
                 </li>
               ))}
             </ul>
-          </Card>
+          </Card></RevealItem>
 
-          <Card className="border-border/60 bg-surface/40 p-8 backdrop-blur">
+          <RevealItem><Card className="h-full border-border/60 bg-surface/40 p-8 backdrop-blur">
             <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-warn/30 bg-warn/10 text-warn">
               <X className="h-4.5 w-4.5" />
             </div>
@@ -54,8 +57,8 @@ export function HonestPositioning() {
                 </li>
               ))}
             </ul>
-          </Card>
-        </div>
+          </Card></RevealItem>
+        </RevealStagger>
       </div>
     </section>
   )
