@@ -12,7 +12,8 @@ import {
 } from "lucide-react"
 
 import { SectionHeader } from "@/components/sections/section-header"
-import { TerminalPreview } from "@/components/sections/terminal-preview"
+import { HeroTerminal } from "@/components/interactive/hero-terminal"
+import { ArchitectureDiagram } from "@/components/interactive/architecture-diagram"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { BENCHMARKS } from "@/lib/benchmarks"
@@ -48,7 +49,11 @@ export default async function ProductPage({ params }: Props) {
             subtitle="The whole stack runs on a single Apple Silicon machine inside your network. Nothing phones home."
           />
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16">
+            <ArchitectureDiagram />
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: FileCode2,
@@ -146,7 +151,7 @@ export default async function ProductPage({ params }: Props) {
             </div>
 
             <div className="relative">
-              <TerminalPreview />
+              <HeroTerminal />
             </div>
           </div>
         </div>

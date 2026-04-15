@@ -6,6 +6,8 @@ import { SectionHeader } from "@/components/sections/section-header"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { TierSelector } from "@/components/interactive/tier-selector"
+import { ROICalculator } from "@/components/interactive/roi-calculator"
 import { TIERS } from "@/lib/tiers"
 import { cn } from "@/lib/utils"
 
@@ -20,6 +22,11 @@ export default async function HardwarePage({ params }: Props) {
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader title={t("title")} subtitle={t("subtitle")} />
+
+        {/* Tier selector slider */}
+        <div className="mt-16">
+          <TierSelector />
+        </div>
 
         {/* Tier cards */}
         <div className="mt-20 grid gap-6 lg:grid-cols-2">
@@ -110,6 +117,11 @@ export default async function HardwarePage({ params }: Props) {
               </div>
             </Card>
           ))}
+        </div>
+
+        {/* ROI calculator */}
+        <div className="mt-24">
+          <ROICalculator />
         </div>
 
         {/* What's included */}

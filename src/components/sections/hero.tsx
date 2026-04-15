@@ -3,7 +3,7 @@ import { useLocale, useTranslations } from "next-intl"
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { TerminalPreview } from "@/components/sections/terminal-preview"
+import { HeroTerminal } from "@/components/interactive/hero-terminal"
 
 export function Hero() {
   const t = useTranslations("Hero")
@@ -140,7 +140,7 @@ export function Hero() {
 
           {/* Terminal */}
           <div className="relative">
-            <TerminalPreview />
+            <HeroTerminal />
           </div>
         </div>
       </div>
