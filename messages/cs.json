@@ -1,0 +1,116 @@
+{
+  "Meta": {
+    "title": "LocalCoder — AI kódování, které nikdy neopustí vaši budovu",
+    "description": "On-prem AI asistent pro vývojáře v českých firmách. Apple Silicon hardware + RAG pipeline nad vaším kódem. Váš kód zůstává váš."
+  },
+  "Nav": {
+    "product": "Produkt",
+    "hardware": "Hardware",
+    "security": "Bezpečnost",
+    "about": "O nás",
+    "pilot": "Nezávazný pilot",
+    "openMenu": "Otevřít menu",
+    "closeMenu": "Zavřít menu"
+  },
+  "Footer": {
+    "tagline": "AI kódování, které nikdy neopustí vaši budovu.",
+    "product": "Produkt",
+    "company": "Společnost",
+    "legal": "Právní",
+    "howItWorks": "Jak to funguje",
+    "hardware": "Hardware",
+    "security": "Bezpečnost",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "privacy": "Ochrana údajů",
+    "imprint": "Tiráž",
+    "rights": "Všechna práva vyhrazena.",
+    "parentCompany": "Produkt společnosti IC SERVIS s.r.o.",
+    "trademark": "Apple, Mac, Mac Mini a Mac Studio jsou ochranné známky Apple Inc. registrované v USA a dalších zemích."
+  },
+  "Hero": {
+    "eyebrow": "On-prem AI kódování pro české firmy",
+    "title": "AI kódování bez odesílání vašeho kódu.",
+    "subtitle": "Turnkey lokální LLM asistent, který indexuje váš codebase a běží na Apple Silicon — váš zdrojový kód, tajemství a IP nikdy neopustí vaši budovu.",
+    "ctaPrimary": "Nezávazný pilot",
+    "ctaSecondary": "Hardwarové úrovně"
+  },
+  "Problem": {
+    "title": "Váš kód je vaše nejcennější aktivum. Cloudová AI ho bere jako trénovací data.",
+    "subtitle": "Tři důvody, proč čeští tech lídři ustupují od cloudových asistentů.",
+    "card1Title": "Kód opouští budovu",
+    "card1Body": "Každý prompt do Copilota nebo Cursoru posílá proprietární zdroják a tajemství na cizí infrastrukturu. Jakmile to pošlete, nekontrolujete, kde to skončí.",
+    "card2Title": "Tlak GDPR a AI Actu",
+    "card2Body": "Povinnosti EU AI Actu nabývají účinnosti v srpnu 2026. Regulované obory — banky, zdravotnictví, obrana — potřebují prokazatelnou rezidenci dat a audit logy.",
+    "card3Title": "Rostoucí API účty",
+    "card3Body": "20členný tým na Claude Max nebo Copilot Enterprise utratí 50–125 tisíc korun měsíčně. Lokální inference se zaplatí do jednoho kvartálu."
+  },
+  "HowItWorks": {
+    "title": "Jak to funguje",
+    "subtitle": "Čtyři kroky. Jedna krabička. Nula kódu opouštějícího vaši síť.",
+    "step1Title": "Indexace",
+    "step1Body": "AST-aware chunking s tree-sitterem extrahuje sémantické jednotky z celého codebase — funkce, třídy, dokumentaci — a embedduje je lokálně.",
+    "step2Title": "Vyhledávání",
+    "step2Body": "Hybridní sémantické + klíčové vyhledávání vytáhne jen relevantní chunky do kontextu. 3,4× menší payloady než naivní grep.",
+    "step3Title": "Generování",
+    "step3Body": "Lokální coding model (Qwen, DeepSeek nebo GLM) dává odpovědi ukotvené ve vašem kódu na vašem hardwaru — nikdy ne na našem.",
+    "step4Title": "Integrace",
+    "step4Body": "Vývojáři zůstávají ve svém IDE. OpenCode, Aider, Continue.dev, VS Code i JetBrains mluví se stejným OpenAI-kompatibilním endpointem."
+  },
+  "Benchmarks": {
+    "title": "Skutečná čísla z naší referenční pipeline.",
+    "subtitle": "Měřeno na 16 GB M1 Pro s Qwen 2.5 Coder 14B napříč Express.js, Next.js a privátním Swift codebase.",
+    "stat1Label": "Rychlejší odpovědi",
+    "stat1Note": "vs. naivní grep + file dump",
+    "stat2Label": "Menší kontext",
+    "stat2Note": "3,7k vs 12,8k znaků na dotaz",
+    "stat3Label": "Nižší cena za odpověď",
+    "stat3Note": "méně tokenů, stejná kvalita"
+  },
+  "HardwareTeaser": {
+    "title": "Jedna krabička na tým. Pět úrovní na výběr.",
+    "subtitle": "Vyberte hardware podle velikosti týmu, workloadu a rozpočtu. Dodáme předkonfigurované, nainstalujeme a podporujeme.",
+    "seeAll": "Všech pět úrovní",
+    "startingAt": "Od",
+    "devs": "vývojářů"
+  },
+  "HonestPositioning": {
+    "title": "Co umíme — a co ne.",
+    "subtitle": "Radši slíbíme méně a dodáme víc. Tady je férový obrázek.",
+    "doTitle": "Co lokální zvládá dobře",
+    "do1": "Dotazy na codebase: „kde je auth middleware?“",
+    "do2": "Boilerplate, CRUD, testy, dokumentace, refactory",
+    "do3": "Code review podle vašeho stylu a konvencí",
+    "do4": "Vše, co těží z hlubokého kontextu vašeho kódu",
+    "dontTitle": "Kdy ještě sáhnout po cloudu",
+    "dont1": "Frontier-level architektonický návrh greenfieldu",
+    "dont2": "Komplexní multi-file reasoning v neznámé doméně",
+    "dont3": "Cutting-edge výzkumné kódování, kde Opus-tier rozhoduje",
+    "dont4": "Tyto případy směrujeme do vašeho cloudu jedním přepínačem"
+  },
+  "CtaBand": {
+    "title": "Chcete svůj kód držet uvnitř budovy?",
+    "subtitle": "Dvoutýdenní placený pilot. Přivezeme hardware, nainstalujeme, naindexujeme repa a změříme přínos pro váš tým.",
+    "cta": "Nezávazný pilot"
+  },
+  "Product": {
+    "title": "Jak LocalCoder opravdu funguje",
+    "subtitle": "Architektura, pipeline a developer experience."
+  },
+  "Hardware": {
+    "title": "Hardwarové úrovně",
+    "subtitle": "Tiché Apple Silicon krabičky, každá s ověřeným modelem a team-size fitem."
+  },
+  "Security": {
+    "title": "Váš kód nikdy neopustí budovu",
+    "subtitle": "Air-gapped ve výchozím stavu. GDPR-aligned. EU AI Act ready."
+  },
+  "About": {
+    "title": "Postaveno v Praze, pro české inženýrské týmy",
+    "subtitle": "Produkt společnosti IC SERVIS s.r.o."
+  },
+  "Pilot": {
+    "title": "Nezávazný pilot",
+    "subtitle": "Řekněte nám něco o svém týmu. Ozveme se do dvou pracovních dnů."
+  }
+}

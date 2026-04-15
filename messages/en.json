@@ -1,0 +1,116 @@
+{
+  "Meta": {
+    "title": "LocalCoder — AI coding that never leaves your building",
+    "description": "Turnkey on-prem AI coding assistant for Czech enterprises. Apple Silicon hardware + RAG pipeline over your own codebase. Your code stays yours."
+  },
+  "Nav": {
+    "product": "Product",
+    "hardware": "Hardware",
+    "security": "Security",
+    "about": "About",
+    "pilot": "Request pilot",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Footer": {
+    "tagline": "AI coding that never leaves your building.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "howItWorks": "How it works",
+    "hardware": "Hardware",
+    "security": "Security",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "imprint": "Imprint",
+    "rights": "All rights reserved.",
+    "parentCompany": "A product by IC SERVIS s.r.o.",
+    "trademark": "Apple, Mac, Mac Mini and Mac Studio are trademarks of Apple Inc., registered in the U.S. and other countries."
+  },
+  "Hero": {
+    "eyebrow": "On-prem AI coding, built for Czech enterprises",
+    "title": "Ship AI coding without shipping your code.",
+    "subtitle": "A turnkey local LLM coding assistant that indexes your codebase and runs on Apple Silicon — so your source, secrets, and IP never leave your building.",
+    "ctaPrimary": "Request a pilot",
+    "ctaSecondary": "See hardware tiers"
+  },
+  "Problem": {
+    "title": "Your code is your most valuable asset. Cloud AI treats it like training data.",
+    "subtitle": "Three reasons Czech engineering leaders are pulling back from cloud coding assistants.",
+    "card1Title": "Your code leaves the building",
+    "card1Body": "Every prompt to Copilot or Cursor ships proprietary source and secrets to third-party infrastructure. Once it's sent, you don't control where it lands.",
+    "card2Title": "GDPR and AI Act pressure",
+    "card2Body": "EU AI Act obligations land August 2026. Regulated industries — banking, healthcare, defense — need provable data residency and audit trails.",
+    "card3Title": "Runaway API costs",
+    "card3Body": "A 20-person team on Claude Max or Copilot Enterprise burns €2,000–5,000 a month. Local inference pays for itself in under a quarter."
+  },
+  "HowItWorks": {
+    "title": "How it works",
+    "subtitle": "Four steps. One box. Zero code leaving your network.",
+    "step1Title": "Index",
+    "step1Body": "AST-aware chunking with tree-sitter extracts semantic units from your entire codebase — functions, classes, docs — and embeds them locally.",
+    "step2Title": "Retrieve",
+    "step2Body": "Hybrid semantic + keyword search pulls only the most relevant chunks into context. 3.4× smaller payloads than naive grep.",
+    "step3Title": "Generate",
+    "step3Body": "A local coding model (Qwen, DeepSeek, or GLM) produces grounded, codebase-aware answers on your hardware — never ours.",
+    "step4Title": "Integrate",
+    "step4Body": "Developers keep their IDE. OpenCode, Aider, Continue.dev, VS Code and JetBrains all talk to the same OpenAI-compatible endpoint."
+  },
+  "Benchmarks": {
+    "title": "Real numbers from our reference pipeline.",
+    "subtitle": "Measured on a 16 GB M1 Pro with Qwen 2.5 Coder 14B across Express.js, Next.js and a private Swift codebase.",
+    "stat1Label": "Faster responses",
+    "stat1Note": "vs. naive grep + file dump",
+    "stat2Label": "Smaller context",
+    "stat2Note": "3.7k vs 12.8k chars per query",
+    "stat3Label": "Lower cost per answer",
+    "stat3Note": "fewer tokens, same quality"
+  },
+  "HardwareTeaser": {
+    "title": "One box per team. Five tiers to choose from.",
+    "subtitle": "Pick the hardware that matches your team size, workload, and budget. We ship it pre-configured, installed, and supported.",
+    "seeAll": "See all five tiers",
+    "startingAt": "Starting at",
+    "devs": "devs"
+  },
+  "HonestPositioning": {
+    "title": "What we do — and what we don't.",
+    "subtitle": "We'd rather undersell and overdeliver. Here's the honest picture.",
+    "doTitle": "What local handles well",
+    "do1": "Codebase Q&A: \"where is the auth middleware?\"",
+    "do2": "Boilerplate, CRUD, tests, docs, refactors",
+    "do3": "Code review on your own style and conventions",
+    "do4": "Everything that benefits from deep codebase context",
+    "dontTitle": "When to still reach for cloud",
+    "dont1": "Frontier-level architectural design on greenfield code",
+    "dont2": "Complex multi-file reasoning across unfamiliar domains",
+    "dont3": "Cutting-edge research coding where Opus-tier matters",
+    "dont4": "We route those to your cloud provider with one toggle"
+  },
+  "CtaBand": {
+    "title": "Ready to keep your code inside the building?",
+    "subtitle": "Two-week paid pilot. We bring the hardware, install it, index your repos, and measure what it does for your team.",
+    "cta": "Request a pilot"
+  },
+  "Product": {
+    "title": "How LocalCoder actually works",
+    "subtitle": "The architecture, the pipeline, and the developer experience."
+  },
+  "Hardware": {
+    "title": "Hardware tiers",
+    "subtitle": "Silent Apple Silicon boxes, each with a proven model and team-size fit."
+  },
+  "Security": {
+    "title": "Your code never leaves the building",
+    "subtitle": "Air-gapped by default. GDPR-aligned. EU AI Act ready."
+  },
+  "About": {
+    "title": "Built in Prague, for Czech engineering teams",
+    "subtitle": "A product by IC SERVIS s.r.o."
+  },
+  "Pilot": {
+    "title": "Request a pilot",
+    "subtitle": "Tell us a bit about your team. We'll come back within two business days."
+  }
+}
