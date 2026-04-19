@@ -32,11 +32,13 @@ export function LocaleSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px]">
         {LOCALES.map((loc) => (
-          <DropdownMenuItem key={loc} asChild className={loc === current ? "font-medium" : ""}>
-            <Link href={pathname} locale={loc}>
-              <span className="mr-2 font-mono text-xs uppercase">{loc}</span>
-              {LABELS[loc]}
-            </Link>
+          <DropdownMenuItem
+            key={loc}
+            className={loc === current ? "font-medium" : ""}
+            render={<Link href={pathname} locale={loc} />}
+          >
+            <span className="mr-2 font-mono text-xs uppercase">{loc}</span>
+            {LABELS[loc]}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
