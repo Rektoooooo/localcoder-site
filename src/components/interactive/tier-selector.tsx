@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
+import { useTranslations } from "next-intl"
 import { Check, Users } from "lucide-react"
 
 import { Slider } from "@/components/ui/slider"
@@ -10,21 +11,24 @@ import { TIERS, recommendTierForTeamSize } from "@/lib/tiers"
 import { cn } from "@/lib/utils"
 
 export function TierSelector() {
+  const t = useTranslations("TierSelector")
+  const tt = useTranslations("Tiers")
   const [size, setSize] = React.useState(10)
   const recommended = recommendTierForTeamSize(size)
+  const recommendedName = tt(`${recommended.id}.name`)
 
   return (
     <div className="rounded-2xl border border-border/60 bg-surface/40 p-8 backdrop-blur md:p-10">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-brand">
-            Find your fit
+            {t("eyebrow")}
           </p>
           <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-            How many developers?
+            {t("title")}
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Drag the slider to see which tier fits your team.
+            {t("body")}
           </p>
         </div>
         <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-background/40 px-5 py-3">
@@ -32,7 +36,7 @@ export function TierSelector() {
           <span className="tabular-nums text-3xl font-semibold tracking-tight">
             {size}
           </span>
-          <span className="text-xs text-subtle">devs</span>
+          <span className="text-xs text-subtle">{t("devs")}</span>
         </div>
       </div>
 
@@ -82,7 +86,7 @@ export function TierSelector() {
               <div className="relative">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-subtle">
-                    {tier.name}
+                    {tt(`${tier.id}.name`)}
                   </span>
                   {isReco && (
                     <motion.span
@@ -107,7 +111,7 @@ export function TierSelector() {
                   </span>
                 </div>
                 <div className="mt-2 font-mono text-[10px] text-subtle">
-                  {tier.devs.min}–{tier.devs.max} devs
+                  {tier.devs.min}–{tier.devs.max} {t("devs")}
                 </div>
               </div>
             </Card>
@@ -122,9 +126,9 @@ export function TierSelector() {
           </div>
           <div>
             <div className="text-sm">
-              <span className="font-semibold">Recommended:</span>{" "}
+              <span className="font-semibold">{t("recommended")}</span>{" "}
               <span className="font-semibold text-brand">
-                {recommended.name}
+                {recommendedName}
               </span>
               <span className="text-muted-foreground">
                 {" "}
@@ -132,8 +136,7 @@ export function TierSelector() {
               </span>
             </div>
             <p className="mt-1 text-xs text-muted-foreground">
-              {recommended.tokensPerSec} · fits {recommended.devs.min}–
-              {recommended.devs.max} developers comfortably.
+              {recommended.tokensPerSec} {t("fitsHint", { min: recommended.devs.min, max: recommended.devs.max })}
             </p>
           </div>
         </div>

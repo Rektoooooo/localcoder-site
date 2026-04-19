@@ -3,6 +3,7 @@
 import * as React from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
 import { toast } from "sonner"
 import { ArrowRight, Check, Loader2 } from "lucide-react"
 
@@ -21,15 +22,16 @@ const TEAM_SIZES = [
   { value: "50+", label: "50+" },
 ] as const
 
-const TIMELINES = [
-  { value: "now", label: "Ready now" },
-  { value: "1-3m", label: "1–3 months" },
-  { value: "3-6m", label: "3–6 months" },
-  { value: "exploring", label: "Just exploring" },
-] as const
-
 export function PilotForm() {
+  const t = useTranslations("PilotForm")
   const [submitted, setSubmitted] = React.useState(false)
+
+  const TIMELINES = [
+    { value: "now", label: t("timelineNow") },
+    { value: "1-3m", label: t("timeline1to3") },
+    { value: "3-6m", label: t("timeline3to6") },
+    { value: "exploring", label: t("timelineExploring") },
+  ] as const
 
   const form = useForm<PilotFormValues>({
     resolver: zodResolver(pilotFormSchema),
@@ -65,9 +67,9 @@ export function PilotForm() {
       })
       if (!res.ok) throw new Error("request_failed")
       setSubmitted(true)
-      toast.success("Thanks — we'll reach out within 2 business days.")
+      toast.success(t("toastSuccess"))
     } catch {
-      toast.error("Something went wrong. Please try again or email us.")
+      toast.error(t("toastError"))
     }
   }
 
@@ -78,11 +80,10 @@ export function PilotForm() {
           <Check className="h-6 w-6" />
         </div>
         <h3 className="mt-5 text-xl font-semibold tracking-tight">
-          Request received
+          {t("receivedTitle")}
         </h3>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-          We&apos;ll reach out within two business days to schedule a call and
-          scope the pilot.
+          {t("receivedBody")}
         </p>
       </div>
     )
@@ -105,44 +106,44 @@ export function PilotForm() {
       />
 
       <div className="grid gap-5 md:grid-cols-2">
-        <Field label="Name" error={errors.name?.message}>
+        <Field label={t("name")} error={errors.name?.message}>
           <Input
-            placeholder="Jan Novák"
+            placeholder={t("namePlaceholder")}
             autoComplete="name"
             aria-invalid={!!errors.name}
             {...register("name")}
           />
         </Field>
 
-        <Field label="Work email" error={errors.email?.message}>
+        <Field label={t("email")} error={errors.email?.message}>
           <Input
             type="email"
-            placeholder="jan@company.cz"
+            placeholder={t("emailPlaceholder")}
             autoComplete="email"
             aria-invalid={!!errors.email}
             {...register("email")}
           />
         </Field>
 
-        <Field label="Company" error={errors.company?.message}>
+        <Field label={t("company")} error={errors.company?.message}>
           <Input
-            placeholder="Acme s.r.o."
+            placeholder={t("companyPlaceholder")}
             autoComplete="organization"
             aria-invalid={!!errors.company}
             {...register("company")}
           />
         </Field>
 
-        <Field label="Role" optional error={errors.role?.message}>
+        <Field label={t("role")} optional optionalLabel={t("optional")} error={errors.role?.message}>
           <Input
-            placeholder="CTO / Head of Engineering"
+            placeholder={t("rolePlaceholder")}
             autoComplete="organization-title"
             {...register("role")}
           />
         </Field>
       </div>
 
-      <Field label="Team size" error={errors.teamSize?.message}>
+      <Field label={t("teamSize")} error={errors.teamSize?.message}>
         <div className="flex flex-wrap gap-2">
           {TEAM_SIZES.map((opt) => (
             <ToggleChip
@@ -158,7 +159,7 @@ export function PilotForm() {
         </div>
       </Field>
 
-      <Field label="Timeline" error={errors.timeline?.message}>
+      <Field label={t("timeline")} error={errors.timeline?.message}>
         <div className="flex flex-wrap gap-2">
           {TIMELINES.map((opt) => (
             <ToggleChip
@@ -175,12 +176,13 @@ export function PilotForm() {
       </Field>
 
       <Field
-        label="Anything we should know?"
+        label={t("message")}
         optional
+        optionalLabel={t("optional")}
         error={errors.message?.message}
       >
         <Textarea
-          placeholder="Stack, repos, concerns, constraints…"
+          placeholder={t("messagePlaceholder")}
           rows={5}
           {...register("message")}
         />
@@ -188,7 +190,7 @@ export function PilotForm() {
 
       <div className="flex items-center justify-between gap-4 border-t border-border/50 pt-6">
         <p className="text-xs text-subtle">
-          We&apos;ll reply within 2 business days.
+          {t("replyNote")}
         </p>
         <Button
           type="submit"
@@ -199,11 +201,11 @@ export function PilotForm() {
           {isSubmitting ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              Sending
+              {t("sending")}
             </>
           ) : (
             <>
-              Request pilot
+              {t("submit")}
               <ArrowRight className="h-4 w-4" />
             </>
           )}
@@ -216,11 +218,13 @@ export function PilotForm() {
 function Field({
   label,
   optional,
+  optionalLabel,
   error,
   children,
 }: {
   label: string
   optional?: boolean
+  optionalLabel?: string
   error?: string
   children: React.ReactNode
 }) {
@@ -229,7 +233,7 @@ function Field({
       <div className="flex items-center justify-between">
         <Label className="text-sm font-medium">{label}</Label>
         {optional && (
-          <span className="text-[11px] text-subtle">Optional</span>
+          <span className="text-[11px] text-subtle">{optionalLabel}</span>
         )}
       </div>
       {children}

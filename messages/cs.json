@@ -45,6 +45,7 @@
     "builtOn": "Postaveno na"
   },
   "Problem": {
+    "eyebrow": "Problém",
     "title": "Váš kód je vaše nejcennější aktivum. Cloudová AI ho bere jako trénovací data.",
     "subtitle": "Tři důvody, proč čeští tech lídři ustupují od cloudových asistentů.",
     "card1Title": "Kód opouští budovu",
@@ -55,6 +56,7 @@
     "card3Body": "20členný tým na Claude Max nebo Copilot Enterprise utratí 50–125 tisíc korun měsíčně. Lokální inference se zaplatí do jednoho kvartálu."
   },
   "HowItWorks": {
+    "eyebrow": "Proces",
     "title": "Jak to funguje",
     "subtitle": "Čtyři kroky. Jedna krabička. Nula kódu opouštějícího vaši síť.",
     "step1Title": "Indexace",
@@ -67,6 +69,8 @@
     "step4Body": "Vývojáři zůstávají ve svém IDE. OpenCode, Aider, Continue.dev, VS Code i JetBrains mluví se stejným OpenAI-kompatibilním endpointem."
   },
   "Benchmarks": {
+    "eyebrow": "Důkaz",
+    "measuredOn": "Měřeno na",
     "title": "Skutečná čísla z naší referenční pipeline.",
     "subtitle": "Měřeno na 16 GB M1 Pro s Qwen 2.5 Coder 14B napříč Express.js, Next.js a privátním Swift codebase.",
     "stat1Label": "Rychlejší odpovědi",
@@ -77,13 +81,18 @@
     "stat3Note": "méně tokenů, stejná kvalita"
   },
   "HardwareTeaser": {
+    "eyebrow": "Hardware",
     "title": "Jedna krabička na tým. Pět úrovní na výběr.",
     "subtitle": "Vyberte hardware podle velikosti týmu, workloadu a rozpočtu. Dodáme předkonfigurované, nainstalujeme a podporujeme.",
     "seeAll": "Všech pět úrovní",
     "startingAt": "Od",
-    "devs": "vývojářů"
+    "devs": "vývojářů",
+    "popular": "Populární",
+    "model": "Model",
+    "throughput": "Propustnost"
   },
   "HonestPositioning": {
+    "eyebrow": "Férový obrázek",
     "title": "Co umíme — a co ne.",
     "subtitle": "Radši slíbíme méně a dodáme víc. Tady je férový obrázek.",
     "doTitle": "Co lokální zvládá dobře",
@@ -98,28 +107,367 @@
     "dont4": "Tyto případy směrujeme do vašeho cloudu jedním přepínačem"
   },
   "CtaBand": {
+    "eyebrow": "Pilot",
     "title": "Chcete svůj kód držet uvnitř budovy?",
     "subtitle": "Dvoutýdenní placený pilot. Přivezeme hardware, nainstalujeme, naindexujeme repa a změříme přínos pro váš tým.",
-    "cta": "Nezávazný pilot"
+    "cta": "Nezávazný pilot",
+    "termDurationLabel": "Délka",
+    "termDurationValue": "2 týdny",
+    "termCostLabel": "Závazek",
+    "termCostValue": "Žádný",
+    "termShipLabel": "Hardware",
+    "termShipValue": "Přivezeme",
+    "reply": "Odpovíme do jednoho pracovního dne"
+  },
+  "Tiers": {
+    "starter": {
+      "name": "Starter",
+      "does1": "Dotazy nad codebase a navigace v kódu",
+      "does2": "Testy, boilerplate, dokumentace",
+      "does3": "Drobné refactory v rámci souboru",
+      "doesNot1": "Cross-file reasoning nad velkými monorepy",
+      "doesNot2": "Těžký souběžný provoz nad 5 vývojářů"
+    },
+    "team": {
+      "name": "Team",
+      "does1": "Hlubší reasoning a hledání chyb",
+      "does2": "Multi-file kontext v rámci jedné služby",
+      "does3": "Solidní code review podle vašich konvencí",
+      "doesNot1": "Frontier architektonický návrh",
+      "doesNot2": "Velmi dlouhé kontexty nad 32k tokenů"
+    },
+    "pro": {
+      "name": "Pro",
+      "does1": "Near-frontier reasoning na většině úloh",
+      "does2": "Víceslužbové monorepy",
+      "does3": "Dlouhé kontexty až ~64k tokenů",
+      "doesNot1": "Hraniční případy na úrovni Claude Opus v nových doménách",
+      "doesNot2": ""
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "does1": "Blížící se inteligenci na úrovni Claude Opus",
+      "does2": "Komplexní reasoning, dlouhé kontexty",
+      "does3": "Plně on-prem, model pod licencí MIT",
+      "doesNot1": "Vysoká souběžnost — jeden velký model",
+      "doesNot2": "Latency-critical UX pro velké týmy"
+    },
+    "cluster": {
+      "name": "Cluster",
+      "does1": "Plná náhrada cloudu pro většinu týmů",
+      "does2": "Rychlý model pro snadné úlohy, chytrý pro těžké",
+      "does3": "Souběžné serving napříč celou vývojovou organizací",
+      "doesNot1": "Překonání managed GPU inference v hrubé propustnosti",
+      "doesNot2": ""
+    }
   },
   "Product": {
     "title": "Jak LocalCoder opravdu funguje",
-    "subtitle": "Architektura, pipeline a developer experience."
+    "subtitle": "Architektura, pipeline a developer experience.",
+    "heroEyebrow": "Produkt",
+    "architecture": {
+      "eyebrow": "Architektura",
+      "title": "Čtyři pohyblivé části, jedna krabička",
+      "body": "Celý stack běží na jednom Apple Silicon stroji uvnitř vaší sítě. Nic neposílá domů.",
+      "running": "Běží",
+      "modLabel": "MOD",
+      "verifiable": "Ověřitelné",
+      "editor": {
+        "name": "Editor",
+        "spec": "OpenAI-kompatibilní",
+        "stack": "HTTPS · Libovolný klient",
+        "body": "OpenCode, Aider, Continue.dev, VS Code nebo JetBrains. Funguje s libovolným OpenAI-kompatibilním klientem."
+      },
+      "gateway": {
+        "name": "API gateway",
+        "spec": "FastAPI",
+        "stack": "Python 3.12 · uvicorn",
+        "body": "Autentizace, sledování využití, injektáž RAG kontextu. Lehká služba postavená na FastAPI."
+      },
+      "vector": {
+        "name": "Vektorový index",
+        "spec": "Qdrant 1.11",
+        "stack": "HNSW · AST chunky",
+        "body": "Qdrant běžící lokálně s AST-aware chunky z vašich rep. Aktuální díky git hookům."
+      },
+      "model": {
+        "name": "Lokální model",
+        "spec": "Qwen · DeepSeek · GLM",
+        "stack": "Ollama + MLX",
+        "body": "Vyměňte model bez zásahu do stacku. Vše běží výhradně na vašem hardwaru."
+      }
+    },
+    "rag": {
+      "eyebrow": "RAG Pipeline",
+      "title": "Ta část, díky které lokální LLM dává smysl.",
+      "body": "Naivní vyhledávání nacpe celé soubory do promptu a doufá. Naše pipeline parsuje váš codebase pomocí tree-sitteru, extrahuje sémantické chunky — funkce, třídy, docstringy — a vytáhne jen to, co je relevantní. Menší kontext, rychlejší odpovědi, ukotvené ve vašem skutečném kódu.",
+      "input": "Vstup",
+      "codebase": "Codebase",
+      "output": "Výstup",
+      "groundedAnswer": "Ukotvená odpověď",
+      "feature1Title": "AST-aware chunking",
+      "feature1Body": "Tree-sitter parsuje 7 jazyků. Funkce zůstávají celé, kontextové hlavičky včetně, cross-reference sledované.",
+      "feature1Metric": "7 jazyků",
+      "feature2Title": "Hybridní vyhledávání",
+      "feature2Body": "Sémantické embeddingy + keyword search. Funguje pro konceptuální dotazy i přesná vyhledání.",
+      "feature2Metric": "3,4× menší",
+      "feature3Title": "Čerstvé po každém pushi",
+      "feature3Body": "Git hook reindexuje jen změněné soubory. Běžný commit je aktualizovaný za 2–5 sekund.",
+      "feature3Metric": "2–5 s refresh"
+    },
+    "benchmark": {
+      "eyebrow": "Grep vs RAG",
+      "title": "Změřeno, ne slíbeno.",
+      "body": "Reálné dotazy nad Express.js, Next.js a privátním Swift codebase. Stejný model, stejný stroj.",
+      "columnA": "Naivní grep + dump souborů",
+      "columnB": "LocalCoder RAG pipeline",
+      "sAvg": "s průměr",
+      "charsPerQuery": "znaků na dotaz",
+      "rowContext": "Kontext",
+      "rowResponseTime": "Doba odezvy",
+      "rowRelevance": "Relevance",
+      "relevanceNaive": "Nahodilá",
+      "relevanceRag": "Ukotvená v kódu",
+      "measuredOn": "Měřeno na"
+    },
+    "integrations": {
+      "eyebrow": "Integrace",
+      "title": "Vývojáři si nechávají své nástroje",
+      "body": "Vystavujeme OpenAI-kompatibilní endpoint. Cokoliv mluví s OpenAI, mluví s LocalCoderem — žádné nové CLI se neučíte.",
+      "endpoint": "Endpoint",
+      "openAiCompatible": "OpenAI-kompatibilní",
+      "dropIn": "Stačí nastavit",
+      "dropInSuffix": "na váš on-prem endpoint",
+      "kindCli": "CLI",
+      "kindExtension": "Rozšíření",
+      "kindIde": "IDE",
+      "kindOffline": "Offline",
+      "kindAny": "Libovolné",
+      "clientCustom": "Vlastní CLI"
+    },
+    "cta": {
+      "eyebrow": "Další krok",
+      "title": "Dvoutýdenní placený pilot na vašem hardwaru.",
+      "button": "Nezávazný pilot"
+    }
   },
   "Hardware": {
     "title": "Hardwarové úrovně",
-    "subtitle": "Tiché Apple Silicon krabičky, každá s ověřeným modelem a team-size fitem."
+    "subtitle": "Tiché Apple Silicon krabičky, každá s ověřeným modelem a team-size fitem.",
+    "mostPopular": "Nejoblíbenější",
+    "oneTime": "jednorázově",
+    "specModel": "Model",
+    "specThroughput": "Propustnost",
+    "specTeam": "Tým",
+    "handlesWell": "Zvládá dobře",
+    "tradeOffs": "Kompromisy",
+    "included": {
+      "title": "Co je v ceně",
+      "mark": "Vč.",
+      "item1Title": "Hardware",
+      "item1Body": "Předkonfigurovaná Apple Silicon krabička doručená do vaší kanceláře.",
+      "item2Title": "Instalace & nastavení",
+      "item2Body": "Instalace na místě, integrace do sítě a zaškolení týmu.",
+      "item3Title": "Indexace codebase",
+      "item3Body": "Neomezený počet rep, AST-aware chunking, git hooky pro průběžné aktualizace.",
+      "item4Title": "Podpora",
+      "item4Body": "12 měsíců prioritní podpory, aktualizace modelů a bezpečnostní patche."
+    },
+    "requestPilot": "Nezávazný pilot"
+  },
+  "TierSelector": {
+    "eyebrow": "Najděte svou úroveň",
+    "title": "Kolik máte vývojářů?",
+    "body": "Táhněte posuvníkem a uvidíte, která úroveň sedí vašemu týmu.",
+    "devs": "vývojářů",
+    "recommended": "Doporučeno:",
+    "fitsHint": "· vhodné pro {min}–{max} vývojářů v pohodě."
+  },
+  "RoiCalculator": {
+    "eyebrow": "ROI Kalkulačka",
+    "title": "Za jak dlouho se vám vrátí investice.",
+    "teamSize": "Velikost týmu",
+    "devs": "vývojářů",
+    "currentCloudTool": "Stávající cloudový nástroj",
+    "localTier": "LocalCoder úroveň",
+    "cloudAi": "Cloudová AI",
+    "perMonth": "za měsíc",
+    "localCoder": "LocalCoder",
+    "oneTimeHardware": "jednorázově hardware",
+    "paybackPeriod": "Doba návratnosti",
+    "months": "měsíců",
+    "threeYearSavings": "Úspora za 3 roky",
+    "vsOnCloud": "vs {amount} v cloudu",
+    "disclaimer": "Počítáme s 15 % ročního opexu na hardware (energie, podpora, aktualizace modelů) — nezapočítává hodnotu toho, že váš kód zůstává on-prem."
   },
   "Security": {
     "title": "Váš kód nikdy neopustí budovu",
-    "subtitle": "Air-gapped ve výchozím stavu. GDPR-aligned. EU AI Act ready."
+    "subtitle": "Air-gapped ve výchozím stavu. GDPR-aligned. EU AI Act ready.",
+    "heroEyebrow": "Bezpečnost",
+    "pillars": {
+      "eyebrow": "Šest pilířů",
+      "title": "Jak přemýšlíme o vašem kódu.",
+      "body": "Žádné triky. Žádné pašování do cloudu. Šest jasných tvrzení, která máme písemně — a která váš CISO ověří za jedno odpoledne.",
+      "enforced": "Vynuceno",
+      "pLabel": "P",
+      "verifiable": "Ověřitelné",
+      "p1Name": "Air-gapped ve výchozím stavu",
+      "p1Spec": "Offline",
+      "p1Body": "Krabička běží plně offline. Volitelný odchozí provoz je povolen jen do vašeho zrcadla modelů a nikam jinam.",
+      "p2Name": "Vaše data, vaše disky",
+      "p2Spec": "On-prem úložiště",
+      "p2Body": "Zdrojový kód, embeddingy, logy i historie relací zůstávají na hardwaru, který máte pod kontrolou. Žádná replikace, žádná telemetrie.",
+      "p3Name": "Lokální autentizace & audit",
+      "p3Spec": "SIEM-ready",
+      "p3Body": "API klíče per vývojář, logy využití a audit trails připravené k exportu do vašeho SIEM. SSO přes OIDC na vyžádání.",
+      "p4Name": "V souladu s GDPR",
+      "p4Spec": "EU rezidence",
+      "p4Body": "Jako zpracovatel nikdy nedostáváme zákaznická data. DPA připravena na vyžádání; česká/EU rezidence z podstaty řešení.",
+      "p5Name": "EU AI Act ready",
+      "p5Spec": "Minimální riziko",
+      "p5Body": "Coding asistenti spadají do kategorie minimálního rizika. Dodáváme technickou dokumentaci a transparentní prohlášení o rizicích.",
+      "p6Name": "Otevřený základ",
+      "p6Spec": "OSS stack",
+      "p6Body": "Používáme OSS komponenty s jasným licencováním — Qdrant, Ollama, tree-sitter, OpenCode. Žádné černé skříňky."
+    },
+    "threat": {
+      "eyebrow": "Threat model",
+      "title": "Férový threat model",
+      "body": "Před čím vás LocalCoder chrání — a co zůstává na vás. Raději to řekneme rovnou, než abychom to obcházeli.",
+      "protectedLabel": "Chráněno",
+      "protectedTitle": "Před čím LocalCoder chrání",
+      "yourJobLabel": "Na vás",
+      "yourJobTitle": "Stále na vás",
+      "protects1": "Únik proprietárního kódu k třetím AI providerům",
+      "protects2": "Prompty a kontext codebase překračující hranice sítě",
+      "protects3": "Vendor lock-in — stack je otevřený a vyměnitelný",
+      "protects4": "Shadow IT: vývojáři vlepují kód do veřejných LLM",
+      "protects5": "Porušení rezidence dat v regulovaných EU oborech",
+      "yours1": "Fyzická bezpečnost hardwaru uvnitř vaší budovy",
+      "yours2": "Segmentace sítě mezi stroji vývojářů a krabičkou",
+      "yours3": "Provisioning uživatelů, SSO a off-boarding procesy",
+      "yours4": "Patching macOS pod krabičkou a vašich IDE pluginů",
+      "yours5": "Rozhodnutí, která repa je bezpečné indexovat"
+    },
+    "cta": {
+      "eyebrow": "Pro vašeho CISO",
+      "title": "Potřebujete jednostránkové shrnutí pro CISO?",
+      "body": "Napište nám — pošleme architektonický diagram, data flow a DPA šablonu připravenou pro váš právní tým.",
+      "button": "Ozvěte se nám",
+      "dpa": "DPA šablona v ceně"
+    }
   },
   "About": {
+    "eyebrow": "O nás",
     "title": "Postaveno v Praze, pro české inženýrské týmy",
-    "subtitle": "Produkt společnosti IC SERVIS s.r.o."
+    "subtitle": "Produkt společnosti IC SERVIS s.r.o.",
+    "p1": "LocalCoder stavíme v Praze inženýři, kteří sledovali, jak jejich klienti znervózněli pokaždé, když vývojář otevřel cloudového AI asistenta. Proprietární kód, regulovaná data, záznamy o zákaznících — to vše proudilo na cizí infrastrukturu bez jakéhokoliv auditu.",
+    "p2": "Technologie, která umí kód udržet on-prem, konečně v roce 2026 dozrála. Unified memory v Apple Silicon, MLX-akcelerovaná inference a otevřené modely jako Qwen 2.5 Coder či DeepSeek V3 udělaly z lokálních coding asistentů reálně použitelné nástroje — ne jen demo.",
+    "p3": "Zproduktovali jsme ty obtížné části — RAG pipeline, indexaci, integraci do IDE, 12 měsíců podpory — aby český inženýrský tým mohl mít zážitek à la Cursor, aniž by z budovy uniknul jediný bajt zdrojového kódu.",
+    "basedInLabel": "Sídlo",
+    "basedInCity": "Praha, Česko",
+    "basedInBody": "Návštěvy na místě kdekoliv v ČR, SK a regionu DACH.",
+    "parentLabel": "Mateřská společnost",
+    "parentBody": "Zavedená s.r.o. poskytující IT služby od roku 1999.",
+    "talkTitle": "Chcete si promluvit?",
+    "talkBody": "Rádi za vámi přijedeme s živou ukázkou na stejném hardwaru, který byste nasadili.",
+    "requestPilot": "Nezávazný pilot"
   },
   "Pilot": {
+    "heroEyebrow": "Pilot",
+    "formLabel": "Vaše údaje",
     "title": "Nezávazný pilot",
-    "subtitle": "Řekněte nám něco o svém týmu. Ozveme se do dvou pracovních dnů."
+    "subtitle": "Řekněte nám něco o svém týmu. Ozveme se do dvou pracovních dnů.",
+    "whatNext": "Co bude dál",
+    "step1Title": "Úvodní hovor",
+    "step1Body": "45minutový videohovor. Zjistíme váš stack, tým a bezpečnostní omezení.",
+    "step2Title": "Dovezeme hardware",
+    "step2Body": "Předkonfigurovaný Mac Mini nebo Studio s OpenCode, RAG pipeline a naindexovanými repy.",
+    "step3Title": "Dva týdny měřeného pilotu",
+    "step3Body": "Vaši vývojáři ho používají každý den. Sbíráme metriky a týdně reportujeme využití, latence a úspory nákladů.",
+    "included": "Co je v ceně",
+    "incl1": "Zápůjčka hardwaru na 2 týdny",
+    "incl2": "Instalace & nastavení na místě",
+    "incl3": "Indexace codebase (až 3 repa)",
+    "incl4": "OpenCode + integrace do IDE",
+    "incl5": "Týdenní report o využití"
+  },
+  "PilotForm": {
+    "name": "Jméno",
+    "namePlaceholder": "Jan Novák",
+    "email": "Pracovní e-mail",
+    "emailPlaceholder": "jan@firma.cz",
+    "company": "Společnost",
+    "companyPlaceholder": "Acme s.r.o.",
+    "role": "Role",
+    "rolePlaceholder": "CTO / Head of Engineering",
+    "teamSize": "Velikost týmu",
+    "timeline": "Horizont",
+    "timelineNow": "Hned",
+    "timeline1to3": "1–3 měsíce",
+    "timeline3to6": "3–6 měsíců",
+    "timelineExploring": "Jen se rozhlížíme",
+    "message": "Něco, co bychom měli vědět?",
+    "messagePlaceholder": "Stack, repa, obavy, omezení…",
+    "optional": "Nepovinné",
+    "replyNote": "Odpovíme do 2 pracovních dnů.",
+    "submit": "Odeslat žádost",
+    "sending": "Odesílám",
+    "toastSuccess": "Díky — ozveme se do 2 pracovních dnů.",
+    "toastError": "Něco se pokazilo. Zkuste to prosím znovu nebo nám napište.",
+    "receivedTitle": "Žádost přijata",
+    "receivedBody": "Ozveme se do dvou pracovních dnů, domluvíme hovor a nascope pilot."
+  },
+  "HeroContainment": {
+    "liveOnPrem": "Živě · on-prem",
+    "containmentField": "Pole izolace",
+    "yourBuilding": "● VAŠE BUDOVA",
+    "cloudOffLimits": "CLOUD AI · MIMO HRU",
+    "blocked": "BLOKOVÁNO",
+    "developer": "Vývojář",
+    "developerSub": "IDE · OpenCode",
+    "localLlm": "Lokální LLM",
+    "localLlmSub": "Ollama + MLX",
+    "prompt": "PROMPT",
+    "tokens": "TOKENY",
+    "traffic": "◆ PROVOZ",
+    "loopClosed": "SMYČKA · UZAVŘENO",
+    "egress": "◆ EGRESS",
+    "egressBlocked": "00 / BLOKOVÁNO",
+    "localFull": "LOKÁLNĚ · 100%",
+    "ariaLabel": "Izolace kódu — prompty a odpovědi nikdy neopustí budovu",
+    "legendPrompt": "Prompt",
+    "legendResponse": "Odpověď",
+    "legendEgress": "Egress blokován"
+  },
+  "HeroHardware": {
+    "onPremRunning": "On-prem · Běží",
+    "macMini": "Mac mini · M4 Pro",
+    "device": "Zařízení",
+    "deviceValue": "M4 Pro · 48 GB",
+    "model": "Model",
+    "modelValue": "Qwen 2.5 Coder",
+    "localFull": "Lokálně · 100%",
+    "ariaLabel": "Editory připojené k Mac mini",
+    "online": "Online"
+  },
+  "ArchitectureDiagram": {
+    "yourNetwork": "Vaše síť",
+    "onPremActive": "On-prem · Aktivní",
+    "ariaLabel": "Architektura LocalCoderu",
+    "developer": "Vývojář",
+    "developerSub": "OpenCode / IDE",
+    "apiGateway": "API gateway",
+    "apiGatewaySub": "auth · RAG · logy",
+    "vectorIndex": "Vektorový index",
+    "vectorIndexSub": "Qdrant · AST chunky",
+    "localLlm": "Lokální LLM",
+    "localLlmSub": "Ollama + MLX",
+    "prompt": "PROMPT",
+    "chunks": "CHUNKY",
+    "tokens": "TOKENY",
+    "legendRequest": "Požadavek",
+    "legendResponse": "Odpověď",
+    "legendBoundary": "Air-gapped hranice"
   }
 }

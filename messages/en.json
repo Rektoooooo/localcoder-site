@@ -45,6 +45,7 @@
     "builtOn": "Built on"
   },
   "Problem": {
+    "eyebrow": "The Problem",
     "title": "Your code is your most valuable asset. Cloud AI treats it like training data.",
     "subtitle": "Three reasons Czech engineering leaders are pulling back from cloud coding assistants.",
     "card1Title": "Your code leaves the building",
@@ -55,6 +56,7 @@
     "card3Body": "A 20-person team on Claude Max or Copilot Enterprise burns €2,000–5,000 a month. Local inference pays for itself in under a quarter."
   },
   "HowItWorks": {
+    "eyebrow": "The Process",
     "title": "How it works",
     "subtitle": "Four steps. One box. Zero code leaving your network.",
     "step1Title": "Index",
@@ -67,6 +69,8 @@
     "step4Body": "Developers keep their IDE. OpenCode, Aider, Continue.dev, VS Code and JetBrains all talk to the same OpenAI-compatible endpoint."
   },
   "Benchmarks": {
+    "eyebrow": "The Proof",
+    "measuredOn": "Measured on",
     "title": "Real numbers from our reference pipeline.",
     "subtitle": "Measured on a 16 GB M1 Pro with Qwen 2.5 Coder 14B across Express.js, Next.js and a private Swift codebase.",
     "stat1Label": "Faster responses",
@@ -77,13 +81,18 @@
     "stat3Note": "fewer tokens, same quality"
   },
   "HardwareTeaser": {
+    "eyebrow": "The Hardware",
     "title": "One box per team. Five tiers to choose from.",
     "subtitle": "Pick the hardware that matches your team size, workload, and budget. We ship it pre-configured, installed, and supported.",
     "seeAll": "See all five tiers",
     "startingAt": "Starting at",
-    "devs": "devs"
+    "devs": "devs",
+    "popular": "Popular",
+    "model": "Model",
+    "throughput": "Throughput"
   },
   "HonestPositioning": {
+    "eyebrow": "The Honest Picture",
     "title": "What we do — and what we don't.",
     "subtitle": "We'd rather undersell and overdeliver. Here's the honest picture.",
     "doTitle": "What local handles well",
@@ -98,28 +107,367 @@
     "dont4": "We route those to your cloud provider with one toggle"
   },
   "CtaBand": {
+    "eyebrow": "The Pilot",
     "title": "Ready to keep your code inside the building?",
     "subtitle": "Two-week paid pilot. We bring the hardware, install it, index your repos, and measure what it does for your team.",
-    "cta": "Request a pilot"
+    "cta": "Request a pilot",
+    "termDurationLabel": "Duration",
+    "termDurationValue": "2 weeks",
+    "termCostLabel": "Commitment",
+    "termCostValue": "None after",
+    "termShipLabel": "Hardware",
+    "termShipValue": "We ship it",
+    "reply": "We reply within one business day"
+  },
+  "Tiers": {
+    "starter": {
+      "name": "Starter",
+      "does1": "Codebase Q&A and navigation",
+      "does2": "Tests, boilerplate, docs",
+      "does3": "Small refactors inside a file",
+      "doesNot1": "Cross-file reasoning on large monorepos",
+      "doesNot2": "Heavy concurrent load beyond 5 devs"
+    },
+    "team": {
+      "name": "Team",
+      "does1": "Richer reasoning and bug-finding",
+      "does2": "Multi-file context within a service",
+      "does3": "Solid code review on your conventions",
+      "doesNot1": "Frontier architectural design",
+      "doesNot2": "Very long contexts beyond 32k tokens"
+    },
+    "pro": {
+      "name": "Pro",
+      "does1": "Near-frontier reasoning on most tasks",
+      "does2": "Multi-service monorepos",
+      "does3": "Long contexts up to ~64k tokens",
+      "doesNot1": "Claude Opus-tier edge cases in novel domains",
+      "doesNot2": ""
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "does1": "Approaching Claude Opus-level intelligence",
+      "does2": "Complex reasoning, long contexts",
+      "does3": "Fully on-prem, MIT-licensed model",
+      "doesNot1": "High concurrency — single large model",
+      "doesNot2": "Latency-critical UX for big teams"
+    },
+    "cluster": {
+      "name": "Cluster",
+      "does1": "Full cloud replacement for most teams",
+      "does2": "Fast model for easy tasks, smart for hard",
+      "does3": "Concurrent serving across whole dev org",
+      "doesNot1": "Beats managed GPU inference on raw throughput",
+      "doesNot2": ""
+    }
   },
   "Product": {
     "title": "How LocalCoder actually works",
-    "subtitle": "The architecture, the pipeline, and the developer experience."
+    "subtitle": "The architecture, the pipeline, and the developer experience.",
+    "heroEyebrow": "The Product",
+    "architecture": {
+      "eyebrow": "The Architecture",
+      "title": "Four moving parts, one box",
+      "body": "The whole stack runs on a single Apple Silicon machine inside your network. Nothing phones home.",
+      "running": "Running",
+      "modLabel": "MOD",
+      "verifiable": "Verifiable",
+      "editor": {
+        "name": "Editor",
+        "spec": "OpenAI-compatible",
+        "stack": "HTTPS · Any client",
+        "body": "OpenCode, Aider, Continue.dev, VS Code or JetBrains. Any OpenAI-compatible client works."
+      },
+      "gateway": {
+        "name": "API gateway",
+        "spec": "FastAPI",
+        "stack": "Python 3.12 · uvicorn",
+        "body": "Auth, usage tracking, RAG context injection. Lightweight FastAPI service."
+      },
+      "vector": {
+        "name": "Vector index",
+        "spec": "Qdrant 1.11",
+        "stack": "HNSW · AST chunks",
+        "body": "Qdrant running locally with AST-aware chunks from your repos. Git-hook fresh."
+      },
+      "model": {
+        "name": "Local model",
+        "spec": "Qwen · DeepSeek · GLM",
+        "stack": "Ollama + MLX",
+        "body": "Swap models without changing the stack. Runs entirely on your hardware."
+      }
+    },
+    "rag": {
+      "eyebrow": "RAG Pipeline",
+      "title": "The part that makes local actually work.",
+      "body": "Naive code search dumps whole files into the prompt and hopes. Our pipeline parses your codebase with tree-sitter, extracts semantic chunks — functions, classes, docstrings — and retrieves only what's relevant. Smaller context, faster answers, grounded in your actual code.",
+      "input": "Input",
+      "codebase": "Codebase",
+      "output": "Output",
+      "groundedAnswer": "Grounded answer",
+      "feature1Title": "AST-aware chunking",
+      "feature1Body": "Tree-sitter parses 7 languages. Functions stay intact, context headers included, cross-references tracked.",
+      "feature1Metric": "7 langs",
+      "feature2Title": "Hybrid retrieval",
+      "feature2Body": "Semantic embeddings + keyword search. Conceptual questions and exact lookups both work.",
+      "feature2Metric": "3.4× smaller",
+      "feature3Title": "Fresh on every push",
+      "feature3Body": "Git hook re-indexes only changed files. A typical commit refreshes in 2–5 seconds.",
+      "feature3Metric": "2–5s refresh"
+    },
+    "benchmark": {
+      "eyebrow": "Grep vs RAG",
+      "title": "Measured, not promised.",
+      "body": "Real queries against Express.js, Next.js and a private Swift codebase. Same model, same machine.",
+      "columnA": "Naive grep + file dump",
+      "columnB": "LocalCoder RAG pipeline",
+      "sAvg": "s avg",
+      "charsPerQuery": "chars per query",
+      "rowContext": "Context",
+      "rowResponseTime": "Response time",
+      "rowRelevance": "Relevance",
+      "relevanceNaive": "Best-effort",
+      "relevanceRag": "Grounded in code",
+      "measuredOn": "Measured on"
+    },
+    "integrations": {
+      "eyebrow": "Integrations",
+      "title": "Developers keep their tools",
+      "body": "We expose an OpenAI-compatible endpoint. Anything that talks to OpenAI talks to LocalCoder — no new CLI to learn.",
+      "endpoint": "Endpoint",
+      "openAiCompatible": "OpenAI-compatible",
+      "dropIn": "Drop-in — set",
+      "dropInSuffix": "to your on-prem endpoint",
+      "kindCli": "CLI",
+      "kindExtension": "Extension",
+      "kindIde": "IDE",
+      "kindOffline": "Offline",
+      "kindAny": "Any",
+      "clientCustom": "Custom CLIs"
+    },
+    "cta": {
+      "eyebrow": "Next step",
+      "title": "Two-week paid pilot on your hardware.",
+      "button": "Request a pilot"
+    }
   },
   "Hardware": {
     "title": "Hardware tiers",
-    "subtitle": "Silent Apple Silicon boxes, each with a proven model and team-size fit."
+    "subtitle": "Silent Apple Silicon boxes, each with a proven model and team-size fit.",
+    "mostPopular": "Most popular",
+    "oneTime": "one-time",
+    "specModel": "Model",
+    "specThroughput": "Throughput",
+    "specTeam": "Team",
+    "handlesWell": "Handles well",
+    "tradeOffs": "Trade-offs",
+    "included": {
+      "title": "What's included",
+      "mark": "Inc.",
+      "item1Title": "Hardware",
+      "item1Body": "Pre-configured Apple Silicon box, delivered to your office.",
+      "item2Title": "Install & setup",
+      "item2Body": "On-site installation, network integration, and staff training.",
+      "item3Title": "Codebase indexing",
+      "item3Body": "Unlimited repos, AST-aware chunking, git hooks for live updates.",
+      "item4Title": "Support",
+      "item4Body": "12 months of priority support, model updates, and security patches."
+    },
+    "requestPilot": "Request a pilot"
+  },
+  "TierSelector": {
+    "eyebrow": "Find your fit",
+    "title": "How many developers?",
+    "body": "Drag the slider to see which tier fits your team.",
+    "devs": "devs",
+    "recommended": "Recommended:",
+    "fitsHint": "· fits {min}–{max} developers comfortably."
+  },
+  "RoiCalculator": {
+    "eyebrow": "ROI Calculator",
+    "title": "See how fast it pays for itself.",
+    "teamSize": "Team size",
+    "devs": "devs",
+    "currentCloudTool": "Current cloud tool",
+    "localTier": "LocalCoder tier",
+    "cloudAi": "Cloud AI",
+    "perMonth": "per month",
+    "localCoder": "LocalCoder",
+    "oneTimeHardware": "one-time hardware",
+    "paybackPeriod": "Payback period",
+    "months": "months",
+    "threeYearSavings": "3-year savings",
+    "vsOnCloud": "vs {amount} on cloud",
+    "disclaimer": "Assumes 15% annual hardware opex (power, support, model updates) — does not factor the value of keeping your code on-prem."
   },
   "Security": {
     "title": "Your code never leaves the building",
-    "subtitle": "Air-gapped by default. GDPR-aligned. EU AI Act ready."
+    "subtitle": "Air-gapped by default. GDPR-aligned. EU AI Act ready.",
+    "heroEyebrow": "Security",
+    "pillars": {
+      "eyebrow": "Six pillars",
+      "title": "How we think about your code.",
+      "body": "No gimmicks. No cloud smuggling. Six plain-English claims we put on paper — and that your CISO can verify in a single afternoon.",
+      "enforced": "Enforced",
+      "pLabel": "P",
+      "verifiable": "Verifiable",
+      "p1Name": "Air-gapped by default",
+      "p1Spec": "Offline",
+      "p1Body": "The box runs fully offline. Optional outbound is allow-listed to your model mirror and nothing else.",
+      "p2Name": "Your data, your disks",
+      "p2Spec": "On-prem storage",
+      "p2Body": "Source code, embeddings, logs, and session history live on hardware you control. No replication, no telemetry.",
+      "p3Name": "Local auth & audit",
+      "p3Spec": "SIEM-ready",
+      "p3Body": "Per-developer API keys, usage logs, and export-ready audit trails for your SIEM. SSO via OIDC on request.",
+      "p4Name": "GDPR aligned",
+      "p4Spec": "EU residency",
+      "p4Body": "As a processor, we never receive customer data. DPAs ready on request; Czech/EU residency by construction.",
+      "p5Name": "EU AI Act ready",
+      "p5Spec": "Minimal risk",
+      "p5Body": "Coding assistants classify as minimal-risk. We provide technical documentation and a transparent risk statement.",
+      "p6Name": "Open foundation",
+      "p6Spec": "OSS stack",
+      "p6Body": "We use OSS components with clear licensing — Qdrant, Ollama, tree-sitter, OpenCode. No black boxes."
+    },
+    "threat": {
+      "eyebrow": "Threat model",
+      "title": "Honest threat model",
+      "body": "What LocalCoder protects against — and what stays your job. We'd rather say so up front than hand-wave past it.",
+      "protectedLabel": "Protected",
+      "protectedTitle": "What LocalCoder protects against",
+      "yourJobLabel": "Your job",
+      "yourJobTitle": "Still your job",
+      "protects1": "Proprietary code leaking to third-party AI providers",
+      "protects2": "Prompts and codebase context crossing network boundaries",
+      "protects3": "Vendor lock-in — the stack is open and swappable",
+      "protects4": "Shadow IT: developers pasting code into public LLMs",
+      "protects5": "Data residency violations for EU-regulated industries",
+      "yours1": "Physical security of the hardware inside your building",
+      "yours2": "Network segmentation between dev machines and the box",
+      "yours3": "User provisioning, SSO, and off-boarding workflows",
+      "yours4": "Patching the underlying macOS and your IDE plugins",
+      "yours5": "Classifying which repos are safe to index"
+    },
+    "cta": {
+      "eyebrow": "For your CISO",
+      "title": "Need the CISO one-pager?",
+      "body": "Email us — we'll send the architecture diagram, data flow, and a DPA template ready for your legal team.",
+      "button": "Talk to us",
+      "dpa": "DPA template included"
+    }
   },
   "About": {
+    "eyebrow": "About",
     "title": "Built in Prague, for Czech engineering teams",
-    "subtitle": "A product by IC SERVIS s.r.o."
+    "subtitle": "A product by IC SERVIS s.r.o.",
+    "p1": "LocalCoder is built in Prague by engineers who watched their clients get nervous every time a developer opened a cloud coding assistant. Proprietary code, regulated data, customer records — all of it was being streamed to third-party infrastructure with no audit trail.",
+    "p2": "The technology to keep that code on-prem finally caught up in 2026. Apple Silicon unified memory, MLX-accelerated inference, and open models like Qwen 2.5 Coder and DeepSeek V3 made local coding assistants actually useful — not just a demo.",
+    "p3": "We productized the hard parts — the RAG pipeline, the indexing, the IDE integration, the 12 months of support — so a Czech engineering team can have a Cursor-like experience without a single byte of source code leaving the building.",
+    "basedInLabel": "Based in",
+    "basedInCity": "Prague, Czechia",
+    "basedInBody": "On-site visits anywhere in the CZ, SK and DACH region.",
+    "parentLabel": "Parent company",
+    "parentBody": "Established s.r.o. providing IT services since 1999.",
+    "talkTitle": "Want to talk?",
+    "talkBody": "We're happy to come to your office with a live demo on the actual hardware you'd deploy.",
+    "requestPilot": "Request a pilot"
   },
   "Pilot": {
+    "heroEyebrow": "The Pilot",
+    "formLabel": "Your details",
     "title": "Request a pilot",
-    "subtitle": "Tell us a bit about your team. We'll come back within two business days."
+    "subtitle": "Tell us a bit about your team. We'll come back within two business days.",
+    "whatNext": "What happens next",
+    "step1Title": "Discovery call",
+    "step1Body": "45-minute video call. We learn about your stack, team, and security constraints.",
+    "step2Title": "We deliver the hardware",
+    "step2Body": "Pre-configured Mac Mini or Studio shipped with OpenCode, RAG pipeline, and your repos indexed.",
+    "step3Title": "Two-week measured pilot",
+    "step3Body": "Your devs use it daily. We instrument it and report usage, latency, and cost savings weekly.",
+    "included": "What's included",
+    "incl1": "Hardware rental for 2 weeks",
+    "incl2": "On-site install & setup",
+    "incl3": "Codebase indexing (up to 3 repos)",
+    "incl4": "OpenCode + IDE integration",
+    "incl5": "Weekly usage report"
+  },
+  "PilotForm": {
+    "name": "Name",
+    "namePlaceholder": "Jan Novák",
+    "email": "Work email",
+    "emailPlaceholder": "jan@company.cz",
+    "company": "Company",
+    "companyPlaceholder": "Acme s.r.o.",
+    "role": "Role",
+    "rolePlaceholder": "CTO / Head of Engineering",
+    "teamSize": "Team size",
+    "timeline": "Timeline",
+    "timelineNow": "Ready now",
+    "timeline1to3": "1–3 months",
+    "timeline3to6": "3–6 months",
+    "timelineExploring": "Just exploring",
+    "message": "Anything we should know?",
+    "messagePlaceholder": "Stack, repos, concerns, constraints…",
+    "optional": "Optional",
+    "replyNote": "We'll reply within 2 business days.",
+    "submit": "Request pilot",
+    "sending": "Sending",
+    "toastSuccess": "Thanks — we'll reach out within 2 business days.",
+    "toastError": "Something went wrong. Please try again or email us.",
+    "receivedTitle": "Request received",
+    "receivedBody": "We'll reach out within two business days to schedule a call and scope the pilot."
+  },
+  "HeroContainment": {
+    "liveOnPrem": "Live · on-prem",
+    "containmentField": "Containment field",
+    "yourBuilding": "● YOUR BUILDING",
+    "cloudOffLimits": "CLOUD AI · OFF-LIMITS",
+    "blocked": "BLOCKED",
+    "developer": "Developer",
+    "developerSub": "IDE · OpenCode",
+    "localLlm": "Local LLM",
+    "localLlmSub": "Ollama + MLX",
+    "prompt": "PROMPT",
+    "tokens": "TOKENS",
+    "traffic": "◆ TRAFFIC",
+    "loopClosed": "LOOP · CLOSED",
+    "egress": "◆ EGRESS",
+    "egressBlocked": "00 / BLOCKED",
+    "localFull": "LOCAL · 100%",
+    "ariaLabel": "Code containment — prompts and responses never leave the building",
+    "legendPrompt": "Prompt",
+    "legendResponse": "Response",
+    "legendEgress": "Egress blocked"
+  },
+  "HeroHardware": {
+    "onPremRunning": "On-prem · Running",
+    "macMini": "Mac mini · M4 Pro",
+    "device": "Device",
+    "deviceValue": "M4 Pro · 48 GB",
+    "model": "Model",
+    "modelValue": "Qwen 2.5 Coder",
+    "localFull": "Local · 100%",
+    "ariaLabel": "Editor clients connected to the Mac mini",
+    "online": "Online"
+  },
+  "ArchitectureDiagram": {
+    "yourNetwork": "Your network",
+    "onPremActive": "On-prem · Active",
+    "ariaLabel": "LocalCoder architecture",
+    "developer": "Developer",
+    "developerSub": "OpenCode / IDE",
+    "apiGateway": "API gateway",
+    "apiGatewaySub": "auth · RAG · logs",
+    "vectorIndex": "Vector index",
+    "vectorIndexSub": "Qdrant · AST chunks",
+    "localLlm": "Local LLM",
+    "localLlmSub": "Ollama + MLX",
+    "prompt": "PROMPT",
+    "chunks": "CHUNKS",
+    "tokens": "TOKENS",
+    "legendRequest": "Request",
+    "legendResponse": "Response",
+    "legendBoundary": "Air-gapped boundary"
   }
 }

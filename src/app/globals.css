@@ -114,6 +114,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
   body {
     background: var(--background);
@@ -163,81 +164,137 @@
   }
 }
 
-/* Hero background system: radial glow + diagonal beams */
-.hero-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 50% at 70% 30%, rgba(225, 29, 72, 0.18), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(249, 115, 22, 0.08), transparent 60%);
-}
-
-.hero-beams {
+/* Hero background system: technical editorial
+   — concentric wireframe rings radiating from the terminal,
+     a fine dot matrix masked to the focal area,
+     an off-axis crimson aurora, and ruler/corner framing. */
+.hero-bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+  isolation: isolate;
 }
 
-.hero-beams::before,
-.hero-beams::after {
+/* Off-axis aurora — weighted toward the terminal side so the headline
+   stays on clean ink while the product draws the light. */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 78% 46%, rgba(225, 29, 72, 0.30), transparent 62%),
+    radial-gradient(ellipse 70% 40% at 85% 12%, rgba(251, 113, 133, 0.10), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 8% 88%, rgba(249, 115, 22, 0.07), transparent 72%);
+}
+
+/* Concentric rings, built with stacked box-shadows so the lines stay
+   crisp at any size. Masked so they fade out before reaching the copy. */
+.hero-rings {
+  position: absolute;
+  right: -320px;
+  top: 50%;
+  width: 820px;
+  height: 820px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+  transform: translateY(-50%);
+  box-shadow:
+    0 0 0 72px color-mix(in oklab, var(--foreground) 0%, transparent),
+    0 0 0 73px color-mix(in oklab, var(--brand) 22%, transparent),
+    0 0 0 168px color-mix(in oklab, var(--foreground) 0%, transparent),
+    0 0 0 169px color-mix(in oklab, var(--foreground) 9%, transparent),
+    0 0 0 284px color-mix(in oklab, var(--foreground) 0%, transparent),
+    0 0 0 285px color-mix(in oklab, var(--foreground) 6%, transparent),
+    0 0 0 416px color-mix(in oklab, var(--foreground) 0%, transparent),
+    0 0 0 417px color-mix(in oklab, var(--foreground) 4%, transparent);
+  mask-image: linear-gradient(to left, black 35%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to left, black 35%, transparent 92%);
+}
+
+/* Fine dot matrix — 2px dots on a 32px pitch, masked to a soft ellipse
+   so it reads as texture, not wallpaper. */
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--foreground) 14%, transparent) 1px,
+    transparent 1.2px
+  );
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 95% 75% at 40% 45%, black 35%, transparent 88%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 75% at 40% 45%, black 35%, transparent 88%);
+}
+
+/* Ruler ticks: a blueprint-style reference strip at the top and bottom
+   of the hero, faded at both edges. */
+.hero-rulers {
+  position: absolute;
+  inset: 0;
+}
+.hero-rulers::before,
+.hero-rulers::after {
   content: "";
   position: absolute;
-  top: -10%;
-  width: 1px;
-  height: 130%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(225, 29, 72, 0.55) 35%,
-    rgba(249, 115, 22, 0.25) 65%,
-    transparent 100%
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    to right,
+    color-mix(in oklab, var(--foreground) 22%, transparent) 0 1px,
+    transparent 1px 48px
   );
-  transform-origin: top center;
-  filter: blur(0.5px);
+  mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 18%, black 82%, transparent);
 }
+.hero-rulers::before { top: 72px; }
+.hero-rulers::after { bottom: 72px; transform: scaleY(-1); }
 
-.hero-beams::before {
-  left: 32%;
-  transform: rotate(14deg);
-  animation: beam-pulse 6s ease-in-out infinite;
-}
-
-.hero-beams::after {
-  right: 22%;
-  transform: rotate(-9deg);
-  animation: beam-pulse 8s ease-in-out infinite 1s;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(225, 29, 72, 0.35) 40%,
-    transparent 100%
-  );
-}
-
-@keyframes beam-pulse {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.85; }
-}
-
-.hero-spotlight {
+/* Corner brackets — subtle technical framing. */
+.hero-corners {
   position: absolute;
-  right: -15%;
-  top: 10%;
-  width: 780px;
-  height: 780px;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgba(225, 29, 72, 0.22) 0%,
-    rgba(225, 29, 72, 0.08) 35%,
-    transparent 70%
+  inset: 0;
+}
+.hero-corners::before,
+.hero-corners::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid color-mix(in oklab, var(--foreground) 28%, transparent);
+}
+.hero-corners::before {
+  top: 44px;
+  left: 44px;
+  border-right: none;
+  border-bottom: none;
+}
+.hero-corners::after {
+  bottom: 44px;
+  right: 44px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Slow scan sweep — adds life without the cliched diagonal beams. */
+@keyframes hero-scan {
+  0%   { transform: translateY(-30%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(130%); opacity: 0; }
+}
+.hero-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(225, 29, 72, 0.055) 50%,
+    transparent 100%
   );
-  filter: blur(60px);
-  pointer-events: none;
+  animation: hero-scan 14s linear infinite;
 }
 
 /* Terminal perspective + glow */
@@ -326,9 +383,19 @@
   z-index: -1;
 }
 
+/* Idle float for the hero product image */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-beams::before,
-  .hero-beams::after,
+  .hero-scan,
+  .hero-float,
   .pulse-dot::before,
   .shimmer-border::before {
     animation: none;

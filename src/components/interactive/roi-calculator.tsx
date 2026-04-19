@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { motion } from "framer-motion"
-import { TrendingDown } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import { Slider } from "@/components/ui/slider"
 import { TIERS, recommendTierForTeamSize, type Tier } from "@/lib/tiers"
@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils"
 
 const CURRENCY = "€"
 
-// Assumption: average cloud coding AI seat cost per dev per month (EUR)
 const CLOUD_SEAT_COSTS = [
   { id: "copilot", name: "Copilot Business", price: 18 },
   { id: "copilot-e", name: "Copilot Enterprise", price: 36 },
@@ -19,6 +18,8 @@ const CLOUD_SEAT_COSTS = [
 ] as const
 
 export function ROICalculator() {
+  const t = useTranslations("RoiCalculator")
+  const tt = useTranslations("Tiers")
   const [teamSize, setTeamSize] = React.useState(12)
   const [seatCostId, setSeatCostId] = React.useState<
     (typeof CLOUD_SEAT_COSTS)[number]["id"]
@@ -31,7 +32,6 @@ export function ROICalculator() {
     CLOUD_SEAT_COSTS.find((s) => s.id === seatCostId) ?? CLOUD_SEAT_COSTS[1]
   const tier = TIERS.find((t) => t.id === tierId) ?? TIERS[1]
 
-  // When team size changes, auto-recommend tier
   const handleTeamSize = (size: number) => {
     setTeamSize(size)
     setTierId(recommendTierForTeamSize(size).id)
@@ -40,7 +40,6 @@ export function ROICalculator() {
   const monthlyCloud = teamSize * seatCost.price
   const yearlyCloud = monthlyCloud * 12
   const threeYearCloud = yearlyCloud * 3
-  // Assume 15% ongoing local maintenance of hardware price annually
   const yearlyLocalOpex = Math.round(tier.price * 0.15)
   const threeYearLocal = tier.price + yearlyLocalOpex * 3
   const threeYearSavings = Math.max(0, threeYearCloud - threeYearLocal)
@@ -50,35 +49,53 @@ export function ROICalculator() {
       : 0
 
   return (
-    <div className="rounded-2xl border border-border/60 bg-surface/40 p-8 backdrop-blur md:p-10">
+    <div className="relative overflow-hidden border border-border-strong/70 bg-surface/30 px-8 py-12 md:px-12 md:py-14">
+      {/* Corner ticks */}
+      <span
+        aria-hidden="true"
+        className="absolute left-5 top-5 h-2 w-2 border-l border-t border-border-strong/80"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute right-5 top-5 h-2 w-2 border-r border-t border-border-strong/80"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute left-5 bottom-5 h-2 w-2 border-l border-b border-border-strong/80"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute right-5 bottom-5 h-2 w-2 border-r border-b border-border-strong/80"
+      />
+
+      {/* Editorial header */}
       <div className="flex items-start justify-between gap-6">
         <div>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-brand">
-            ROI calculator
-          </p>
-          <h3 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-            See how fast it pays for itself.
-          </h3>
-        </div>
-        <div className="hidden md:block">
-          <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-background/60 text-brand">
-            <TrendingDown className="h-5 w-5" />
+          <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+            <span className="h-px w-10 bg-brand" aria-hidden="true" />
+            {t("eyebrow")}
           </div>
+          <h3 className="mt-6 text-balance text-[32px] font-semibold leading-[1.1] tracking-[-0.025em] md:text-[40px]">
+            {t("title")}
+          </h3>
         </div>
       </div>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
         {/* Inputs */}
-        <div className="space-y-8">
+        <div className="space-y-10">
           {/* Team size */}
           <div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm font-medium">Team size</label>
-              <span className="tabular-nums text-sm font-semibold text-foreground">
-                {teamSize} devs
+            <div className="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.22em]">
+              <span className="text-subtle">{t("teamSize")}</span>
+              <span className="flex items-baseline gap-1 text-foreground">
+                <span className="tabular-nums text-[22px] font-semibold leading-none tracking-[-0.01em]">
+                  {teamSize}
+                </span>
+                <span className="text-subtle">{t("devs")}</span>
               </span>
             </div>
-            <div className="mt-4">
+            <div className="mt-6">
               <Slider
                 value={[teamSize]}
                 min={1}
@@ -88,8 +105,12 @@ export function ROICalculator() {
                   handleTeamSize(Array.isArray(v) ? (v[0] ?? 1) : v)
                 }
               />
-              <div className="mt-2 flex justify-between font-mono text-[10px] text-subtle">
-                <span>1</span>
+              <div className="mt-3 flex justify-between font-mono text-[9.5px] uppercase tracking-[0.2em] text-subtle">
+                <span>01</span>
+                <span>10</span>
+                <span>20</span>
+                <span>30</span>
+                <span>40</span>
                 <span>50</span>
               </div>
             </div>
@@ -97,121 +118,171 @@ export function ROICalculator() {
 
           {/* Current cloud tool */}
           <div>
-            <label className="text-sm font-medium">
-              Current cloud AI tool
-            </label>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {CLOUD_SEAT_COSTS.map((tool) => (
-                <button
-                  key={tool.id}
-                  type="button"
-                  onClick={() => setSeatCostId(tool.id)}
-                  className={cn(
-                    "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all",
-                    seatCostId === tool.id
-                      ? "border-brand/60 bg-brand/10 text-foreground"
-                      : "border-border bg-surface/40 text-muted-foreground hover:border-border-strong hover:text-foreground"
-                  )}
-                >
-                  {tool.name}
-                  <span className="ml-1.5 text-subtle">
-                    {CURRENCY}
-                    {tool.price}/mo
-                  </span>
-                </button>
-              ))}
+            <div className="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em]">
+              <span className="text-brand">A</span>
+              <span className="text-subtle">{t("currentCloudTool")}</span>
+              <span className="h-px flex-1 bg-border-strong/50" aria-hidden="true" />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {CLOUD_SEAT_COSTS.map((tool) => {
+                const active = seatCostId === tool.id
+                return (
+                  <button
+                    key={tool.id}
+                    type="button"
+                    onClick={() => setSeatCostId(tool.id)}
+                    className={cn(
+                      "group inline-flex items-center gap-2 border px-3 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.16em] transition-all",
+                      active
+                        ? "border-brand/60 bg-brand/[0.06] text-foreground"
+                        : "border-border-strong/70 bg-surface/40 text-muted-foreground hover:border-brand/40 hover:text-foreground"
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "h-1 w-1 rounded-full transition-colors",
+                        active ? "bg-brand" : "bg-border-strong"
+                      )}
+                    />
+                    {tool.name}
+                    <span className="text-subtle">
+                      {CURRENCY}
+                      {tool.price}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
           {/* Tier */}
           <div>
-            <label className="text-sm font-medium">LocalCoder tier</label>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {TIERS.map((t) => (
-                <button
-                  key={t.id}
-                  type="button"
-                  onClick={() => setTierId(t.id)}
-                  className={cn(
-                    "rounded-full border px-3.5 py-1.5 text-xs font-medium transition-all",
-                    tierId === t.id
-                      ? "border-brand/60 bg-brand/10 text-foreground"
-                      : "border-border bg-surface/40 text-muted-foreground hover:border-border-strong hover:text-foreground"
-                  )}
-                >
-                  {t.name}
-                  <span className="ml-1.5 text-subtle">
-                    {CURRENCY}
-                    {(t.price / 1000).toFixed(1)}k
-                  </span>
-                </button>
-              ))}
+            <div className="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em]">
+              <span className="text-brand">B</span>
+              <span className="text-subtle">{t("localTier")}</span>
+              <span className="h-px flex-1 bg-border-strong/50" aria-hidden="true" />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {TIERS.map((tr) => {
+                const active = tierId === tr.id
+                return (
+                  <button
+                    key={tr.id}
+                    type="button"
+                    onClick={() => setTierId(tr.id)}
+                    className={cn(
+                      "group inline-flex items-center gap-2 border px-3 py-1.5 font-mono text-[10.5px] uppercase tracking-[0.16em] transition-all",
+                      active
+                        ? "border-brand/60 bg-brand/[0.06] text-foreground"
+                        : "border-border-strong/70 bg-surface/40 text-muted-foreground hover:border-brand/40 hover:text-foreground"
+                    )}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "h-1 w-1 rounded-full transition-colors",
+                        active ? "bg-brand" : "bg-border-strong"
+                      )}
+                    />
+                    {tt(`${tr.id}.name`)}
+                    <span className="text-subtle">
+                      {CURRENCY}
+                      {(tr.price / 1000).toFixed(1)}k
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </div>
         </div>
 
-        {/* Results */}
-        <div className="relative overflow-hidden rounded-xl border border-border/60 bg-background/40 p-6">
+        {/* Results — instrument panel */}
+        <div className="relative overflow-hidden border border-border-strong/60 bg-background/60 p-8">
+          {/* Ambient glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(225,29,72,0.06),transparent_70%)]"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 70% 90% at 90% 10%, color-mix(in oklab, var(--brand) 10%, transparent), transparent 62%)",
+            }}
           />
 
-          <div className="relative space-y-6">
-            <StatRow
-              label="Cloud AI (monthly)"
-              value={formatMoney(monthlyCloud)}
-              muted
-            />
-            <StatRow
-              label="LocalCoder hardware"
-              value={formatMoney(tier.price)}
-              sub="one-time"
-              muted
-            />
+          <div className="relative">
+            {/* Top two cost rows */}
+            <dl className="space-y-4">
+              <StatRow
+                label={t("cloudAi")}
+                sub={t("perMonth")}
+                value={formatMoney(monthlyCloud)}
+              />
+              <StatRow
+                label={t("localCoder")}
+                sub={t("oneTimeHardware")}
+                value={formatMoney(tier.price)}
+              />
+            </dl>
 
-            <div className="border-t border-border/60 pt-6">
-              <div className="text-[11px] font-mono uppercase tracking-[0.14em] text-subtle">
-                Payback period
+            {/* Payback readout */}
+            <div className="mt-8 border-t border-border-strong/60 pt-8">
+              <div className="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em]">
+                <span className="text-brand">↘</span>
+                <span className="text-subtle">{t("paybackPeriod")}</span>
+                <span className="h-px flex-1 bg-border-strong/50" aria-hidden="true" />
               </div>
               <motion.div
                 key={paybackMonths}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="mt-3 tabular-nums text-5xl font-semibold tracking-[-0.03em] md:text-6xl"
+                transition={{ duration: 0.35 }}
+                className="mt-5 flex items-baseline gap-2"
               >
-                {paybackMonths}
-                <span className="ml-2 text-2xl font-normal text-muted-foreground">
-                  months
+                <span className="tabular-nums text-[68px] font-semibold leading-[0.9] tracking-[-0.04em] md:text-[80px]">
+                  {paybackMonths}
+                </span>
+                <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-brand">
+                  {t("months")}
                 </span>
               </motion.div>
+              <div
+                aria-hidden="true"
+                className="mt-4 h-px w-full"
+                style={{
+                  background:
+                    "linear-gradient(to right, color-mix(in oklab, var(--brand) 70%, transparent), color-mix(in oklab, var(--foreground) 10%, transparent) 50%, transparent)",
+                }}
+              />
             </div>
 
-            <div className="rounded-lg border border-success/20 bg-success/5 p-4">
-              <div className="text-[11px] font-mono uppercase tracking-[0.14em] text-success">
-                3-year savings
+            {/* 3-year savings */}
+            <div className="mt-8 border border-brand/30 bg-brand/[0.04] p-5">
+              <div className="flex items-center gap-3 font-mono text-[10.5px] uppercase tracking-[0.22em] text-brand">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-brand/70" />
+                  <span className="relative inline-block h-1.5 w-1.5 rounded-full bg-brand" />
+                </span>
+                {t("threeYearSavings")}
               </div>
               <motion.div
                 key={threeYearSavings}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="mt-2 tabular-nums text-3xl font-semibold tracking-tight text-foreground"
+                className="mt-3 tabular-nums text-[34px] font-semibold leading-none tracking-[-0.025em] text-foreground"
               >
                 {formatMoney(threeYearSavings)}
               </motion.div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                vs {formatMoney(threeYearCloud)} on cloud
+              <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-subtle">
+                {t("vsOnCloud", { amount: formatMoney(threeYearCloud) })}
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <p className="mt-6 font-mono text-[10.5px] text-subtle">
-        Assumes 15% annual hardware opex (power, support, model updates). Does
-        not factor the value of keeping your code on-prem.
+      <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.2em] text-subtle">
+        {t("disclaimer")}
       </p>
     </div>
   )
@@ -219,27 +290,26 @@ export function ROICalculator() {
 
 function StatRow({
   label,
-  value,
   sub,
-  muted,
+  value,
 }: {
   label: string
-  value: string
   sub?: string
-  muted?: boolean
+  value: string
 }) {
   return (
-    <div className="flex items-start justify-between gap-4">
+    <div className="flex items-start justify-between gap-4 border-b border-border-strong/40 pb-4 last:border-b-0 last:pb-0">
       <div>
-        <div className="text-sm text-muted-foreground">{label}</div>
-        {sub && <div className="text-[11px] text-subtle">{sub}</div>}
-      </div>
-      <div
-        className={cn(
-          "tabular-nums text-lg font-semibold tracking-tight",
-          muted ? "text-muted-foreground" : "text-foreground"
+        <div className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-subtle">
+          {label}
+        </div>
+        {sub && (
+          <div className="mt-0.5 font-mono text-[9.5px] uppercase tracking-[0.2em] text-subtle/80">
+            {sub}
+          </div>
         )}
-      >
+      </div>
+      <div className="tabular-nums text-[22px] font-semibold leading-none tracking-[-0.015em] text-foreground">
         {value}
       </div>
     </div>

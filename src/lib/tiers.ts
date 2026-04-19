@@ -116,8 +116,17 @@ export const TIERS: Tier[] = [
 ]
 
 export function recommendTierForTeamSize(size: number): Tier {
-  return (
-    TIERS.find((t) => size >= t.devs.min && size <= t.devs.max) ??
-    TIERS[TIERS.length - 1]
+  if (size <= TIERS[0].devs.min) return TIERS[0]
+  const candidates = TIERS.filter(
+    (t) => size >= t.devs.min && size <= t.devs.max
   )
+  if (candidates.length === 0) return TIERS[TIERS.length - 1]
+  // Prefer the tier with the tightest containing range, then the earliest
+  // listed tier on ties. This lets specialty tiers (e.g. Enterprise 10–15)
+  // win over broader ones (Pro 10–20) within their sweet spot.
+  return candidates.reduce((best, t) => {
+    const tRange = t.devs.max - t.devs.min
+    const bRange = best.devs.max - best.devs.min
+    return tRange < bRange ? t : best
+  })
 }

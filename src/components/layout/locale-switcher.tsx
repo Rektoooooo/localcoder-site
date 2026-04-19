@@ -1,6 +1,6 @@
 "use client"
 
-import { useParams, usePathname, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import { Globe } from "lucide-react"
 
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Link, usePathname } from "@/i18n/navigation"
 import { LOCALES } from "@/lib/constants"
 
 const LABELS: Record<string, string> = {
@@ -17,20 +18,9 @@ const LABELS: Record<string, string> = {
 }
 
 export function LocaleSwitcher() {
-  const router = useRouter()
-  const pathname = usePathname() ?? "/"
+  const pathname = usePathname()
   const params = useParams<{ locale: string }>()
   const current = params?.locale ?? "en"
-
-  const switchTo = (next: string) => {
-    const segments = pathname.split("/")
-    if (segments[1] && LOCALES.includes(segments[1] as (typeof LOCALES)[number])) {
-      segments[1] = next
-    } else {
-      segments.splice(1, 0, next)
-    }
-    router.push(segments.join("/") || `/${next}`)
-  }
 
   return (
     <DropdownMenu>
@@ -42,13 +32,11 @@ export function LocaleSwitcher() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px]">
         {LOCALES.map((loc) => (
-          <DropdownMenuItem
-            key={loc}
-            onSelect={() => switchTo(loc)}
-            className={loc === current ? "font-medium" : ""}
-          >
-            <span className="mr-2 font-mono text-xs uppercase">{loc}</span>
-            {LABELS[loc]}
+          <DropdownMenuItem key={loc} asChild className={loc === current ? "font-medium" : ""}>
+            <Link href={pathname} locale={loc}>
+              <span className="mr-2 font-mono text-xs uppercase">{loc}</span>
+              {LABELS[loc]}
+            </Link>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
